@@ -109,6 +109,8 @@ open class DTPhotoViewerController: UIViewController {
     /// Single tap gesture
     public internal(set) var singleTapGestureRecognizer: UITapGestureRecognizer!
     
+    public internal(set) var longPressedGestureRecognizer: UILongPressGestureRecognizer!
+    
     fileprivate var _shouldHideStatusBar = false
     fileprivate var _shouldUseStatusBarStyle = false
     
@@ -193,6 +195,9 @@ open class DTPhotoViewerController: UIViewController {
         scrollView.delegate = self
         view.addSubview(imageView)
         view.addSubview(scrollView)
+        
+        longPressedGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(_handleLongPressedGesture(_:)))
+        longPressedGestureRecognizer.minimumPressDuration = 0.9
         
         //Tap gesture recognizer
         singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(_handleTapGesture))
@@ -310,6 +315,15 @@ open class DTPhotoViewerController: UIViewController {
     
     func _dismiss() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func _handleLongPressedGesture(_ gesture: UITapGestureRecognizer) {
+        if gesture.state == .began {
+            didReceiveTapGesture()
+            
+            // Delegate method
+            delegate?.photoViewerControllerDidReceiveLongPressedGesture?(self)
+        }
     }
     
     @objc func _handleTapGesture(_ gesture: UITapGestureRecognizer) {

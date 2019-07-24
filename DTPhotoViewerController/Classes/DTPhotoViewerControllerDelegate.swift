@@ -17,6 +17,8 @@ import UIKit
     
     @objc optional func photoViewerController(_ photoViewerController: DTPhotoViewerController, willZoomOnPhotoAtIndex: Int)
     
+    @objc optional func photoViewerControllerDidReceiveLongPressedGesture(_ photoViewerController: DTPhotoViewerController)
+    
     @objc optional func photoViewerControllerDidReceiveTapGesture(_ photoViewerController: DTPhotoViewerController)
     
     @objc optional func photoViewerControllerDidReceiveDoubleTapGesture(_ photoViewerController: DTPhotoViewerController)
