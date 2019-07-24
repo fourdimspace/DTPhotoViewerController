@@ -174,4 +174,8 @@ extension ViewController: SimplePhotoViewerControllerDelegate {
     func simplePhotoViewerController(_ viewController: SimplePhotoViewerController, savePhotoAt index: Int) {
         UIImageWriteToSavedPhotosAlbum(images[index], nil, nil, nil)
     }
+    
+    func photoViewerControllerDidReceiveLongPressedGesture(_ photoViewerController: DTPhotoViewerController) {
+        NSLog("%s", "")
+    }
 }

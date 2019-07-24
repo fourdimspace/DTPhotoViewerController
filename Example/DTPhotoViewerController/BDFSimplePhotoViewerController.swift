@@ -86,7 +86,7 @@ class SimplePhotoViewerController: DTPhotoViewerController {
         registerClassPhotoViewer(CustomPhotoCollectionViewCell.self)
         view.addSubview(cancelButton)
         view.addSubview(moreButton)
-
+        
         configureOverlayViews(hidden: true, animated: false)
         // Do any additional setup after loading the view.
     }
