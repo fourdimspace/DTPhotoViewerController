@@ -214,7 +214,9 @@ open class DTPhotoViewerController: UIViewController {
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         singleTapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
+        singleTapGestureRecognizer.require(toFail: longPressedGestureRecognizer)
         
+        scrollView.addGestureRecognizer(longPressedGestureRecognizer)
         scrollView.addGestureRecognizer(doubleTapGestureRecognizer)
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         view.addGestureRecognizer(panGestureRecognizer)
